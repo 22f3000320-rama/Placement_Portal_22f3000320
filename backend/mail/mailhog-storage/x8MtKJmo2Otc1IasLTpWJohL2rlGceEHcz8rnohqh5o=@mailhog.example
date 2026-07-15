@@ -1,0 +1,29 @@
+HELO:<LAPTOP-SAEQMVK6.localdomain>
+FROM:<rama@gmail.com>
+TO:<rama@portal.com>
+
+Content-Type: multipart/mixed; boundary="===============7933011696260295542=="
+MIME-Version: 1.0
+To: rama@portal.com
+From: rama@gmail.com
+Subject: Your Application History
+
+--===============7933011696260295542==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+Hello, please find your application history attached.
+--===============7933011696260295542==
+Content-Type: text/csv
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=application_history_1.csv
+
+QXBwbGljYXRpb24gSUQsRHJpdmUgSUQsSm9iIFRpdGxlLENvbXBhbnkgTmFtZSxBcHBsaWVkIE9u
+LFN0YXR1cw0KMSwxLERhdGEgU2NpZW5jZSBJbnRlcm4sRmxleG1vbmV5LDIwMjYtMDctMDksYXBw
+bGllZA0KMywyLERhdGEgRW5naW5lZXIgSW50ZXJuLEZsZXhtb25leSwyMDI2LTA3LTEzLGFwcGxp
+ZWQNCjQsNCxBbmRyb2lkIEF1dG8gRGV2ZWxvcGVyLEF0aGVyLDIwMjYtMDctMTMsYXBwbGllZA0K
+NSw1LFN5dGVtIEVuZ2luZWVyLEF0aGVyLDIwMjYtMDctMTQsYXBwbGllZA0K
+
+--===============7933011696260295542==--

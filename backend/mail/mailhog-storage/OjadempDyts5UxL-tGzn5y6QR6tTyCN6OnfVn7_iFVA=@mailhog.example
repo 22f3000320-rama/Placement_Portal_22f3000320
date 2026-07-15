@@ -1,0 +1,101 @@
+HELO:<LAPTOP-SAEQMVK6.localdomain>
+FROM:<rama@gmail.com>
+TO:<sachin@portal.com>
+
+Content-Type: multipart/mixed; boundary="===============5541407708927005522=="
+MIME-Version: 1.0
+To: sachin@portal.com
+From: rama@gmail.com
+Subject: Daily Reminders
+
+--===============5541407708927005522==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadline Reminders</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light p-4"> <div class="container-fluid max-w-100" style="max-width: 1200px;">
+        
+        <div class="card shadow-sm border-0 rounded-4">
+            
+            <div class="card-header bg-white border-bottom p-4">
+                <h3 class="mb-0 text-primary fw-bold">Deadline Reminders</h3>
+            </div>
+            
+            <div class="card-body p-4">
+                
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        
+                        <thead class="table-light">
+                            <tr>
+                                <th class="py-3 text-center text-secondary" style="width: 80px;">Sr No.</th>
+                                <th class="py-3 text-secondary">Drive ID</th>
+                                <th class="py-3 text-secondary">Company</th>
+                                <th class="py-3 text-secondary">Job Title</th>
+                                <th class="py-3 text-secondary">Deadline</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody class="border-top-0">
+                            
+                            <tr>
+                                <td class="py-3 text-center text-muted">1</td>
+                                <td class="py-3 fw-bold text-dark">1</td>
+                                <td class="py-3">Flexmoney</td>
+                                <td class="py-3">Data Science Intern</td>
+                                <td class="py-3 fw-bold text-dark">2026-07-31</td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="py-3 text-center text-muted">2</td>
+                                <td class="py-3 fw-bold text-dark">2</td>
+                                <td class="py-3">Flexmoney</td>
+                                <td class="py-3">Data Engineer Intern</td>
+                                <td class="py-3 fw-bold text-dark">2026-07-31</td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="py-3 text-center text-muted">3</td>
+                                <td class="py-3 fw-bold text-dark">4</td>
+                                <td class="py-3">Ather</td>
+                                <td class="py-3">Android Auto Developer</td>
+                                <td class="py-3 fw-bold text-dark">2026-08-06</td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="py-3 text-center text-muted">4</td>
+                                <td class="py-3 fw-bold text-dark">5</td>
+                                <td class="py-3">Ather</td>
+                                <td class="py-3">Sytem Engineer</td>
+                                <td class="py-3 fw-bold text-dark">2026-07-14</td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="py-3 text-center text-muted">5</td>
+                                <td class="py-3 fw-bold text-dark">6</td>
+                                <td class="py-3">Flexmoney</td>
+                                <td class="py-3">ghhcbdsibci</td>
+                                <td class="py-3 fw-bold text-dark">2026-07-31</td>
+                            </tr>
+                            
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+--===============5541407708927005522==--
