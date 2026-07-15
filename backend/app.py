@@ -26,7 +26,7 @@ CORS(app)
 db.init_app(app)
 jwt = JWTManager(app)
 cache = Cache(app)
-
+    
 
 @app.route('/api/student/register', methods=['POST'])
 def register_student():
@@ -344,7 +344,7 @@ def get_students():
 def get_pending_drives():
     role = get_jwt().get('role')
     if role == 'admin':
-        drives = Placement_Drive.query.filter_by(status='pending').order_by(Placement_Drive.deadline.asc()).all()
+        drives = Placement_Drive.query.join(Company).join(User).filter(Placement_Drive.status=='pending', User.is_active == True).order_by(Placement_Drive.deadline.asc()).all()
         
     elif role == 'company':
         company = Company.query.join(User).filter_by(email=get_jwt_identity()).first()
@@ -369,13 +369,13 @@ def get_ongoing_drives():
     role = get_jwt().get('role')
     driveCount = 0
     if role == 'admin':
-        drives = Placement_Drive.query.filter_by(status='approved').order_by(Placement_Drive.deadline.asc()).all()
+        drives = Placement_Drive.query.join(Company).join(User).filter(Placement_Drive.status=='approved', User.is_active == True).order_by(Placement_Drive.deadline.asc()).all()
         driveCount = len(drives)
     if role == 'company':
         company = Company.query.join(User).filter_by(email=get_jwt_identity()).first()
         drives = Placement_Drive.query.filter_by(company_id=company.company_id, status='approved').order_by(Placement_Drive.deadline.asc()).all()
     if role=='student':
-        drives = Placement_Drive.query.filter_by(status='approved').all()
+        drives = Placement_Drive.query.join(Company).join(User).filter(Placement_Drive.status=='approved', User.is_active == True).all()
 
     ongoing_drives = []
     for drive in drives:
@@ -778,7 +778,7 @@ def get_searched_drives():
     role = get_jwt().get('role')
     if role not in ['admin', 'student']:
         return jsonify({'message':'Access Forbidden'}), 403
-    drives = Placement_Drive.query.options(joinedload(Placement_Drive.company)).filter(Placement_Drive.status=='approved')
+    drives = Placement_Drive.query.join(Company).join(User).filter(Placement_Drive.status=='approved', User.is_active == True)
     
     grad_year = request.args.get('gradYear')
     cgpa = request.args.get('cgpa')
@@ -787,7 +787,7 @@ def get_searched_drives():
     skills = skills_query.split(',') if skills_query else []
     
     if grad_year:
-        drives = drives.filter(Placement_Drive.year_threshold == int(grad_year))
+        drives = drives.filter(Placement_Drive.year_threshold >= int(grad_year))
     if cgpa:
         drives = drives.filter(Placement_Drive.cgpa_threshold<=float(cgpa))
     if department:
@@ -816,10 +816,11 @@ def get_eligible_drives():
     student = Student.query.join(User).filter_by(email = get_jwt_identity()).first()
     if not student:
         return jsonify({'message':'Student not found,'}), 404
-    drives = Placement_Drive.query.filter(
+    drives = Placement_Drive.query.join(Company).join(User).filter(
+        User.is_active == True,
         Placement_Drive.status == 'approved',
         Placement_Drive.cgpa_threshold <= student.cgpa,
-        Placement_Drive.year_threshold == student.year,
+        Placement_Drive.year_threshold >= student.year,
         Placement_Drive.branch == student.department
     )
     eligible_drives = drives.all()
@@ -878,7 +879,6 @@ def export_applications():
     student = Student.query.join(User).filter(User.email==get_jwt_identity()).first()
     export_application_history.delay(student.student_id)
     return jsonify({'message':'Application History has been exported. Please check your email.'})
-    
 
 if __name__ == '__main__':
     with app.app_context():
@@ -888,3 +888,5 @@ if __name__ == '__main__':
             db.session.add(admin)
             db.session.commit()
     app.run(debug=True)
+
+
